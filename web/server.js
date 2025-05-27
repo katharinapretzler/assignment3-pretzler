@@ -16,7 +16,7 @@ app.get('/store', async (req, res) => {
     return res.status(400).send('Fehlende Parameter');
   }
   await redisClient.set(key, value);
-  res.send(`✅ Schlüssel "${key}" wurde gespeichert mit Wert "${value}"`);
+  res.send(`"${key}" wurde erfolgreich gespeichert mit Wert "${value}"`);
 });
 
 app.get('/fetch', async (req, res) => {
@@ -25,7 +25,7 @@ app.get('/fetch', async (req, res) => {
     return res.status(400).send('Parameter "key" fehlt');
   }
   const result = await redisClient.get(key);
-  res.send(result ? `📦 Wert: ${result}` : '❌ Kein Eintrag gefunden');
+  res.send(result ? `Wert: ${result}` : 'Leider kein Eintrag gefunden');
 });
 
 app.listen(PORT, () => {
