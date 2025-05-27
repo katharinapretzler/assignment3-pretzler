@@ -22,11 +22,13 @@ jobs:
 
     - name: Build and Push Web Image
       run: |
-        docker build -t ghcr.io/${{ github.repository_owner }}/assignment3-web:latest ./web
-        docker push ghcr.io/${{ github.repository_owner }}/assignment3-web:latest
+        docker build -t ghcr.io/${{ github.actor }}/assignment3-web:latest ./web
+        docker push ghcr.io/${{ github.actor }}/assignment3-web:latest
+
 
     - name: Pull, Tag, and Push Redis Image
       run: |
         docker pull redis:alpine
-        docker tag redis:alpine ghcr.io/${{ github.repository_owner }}/assignment3-redis:latest
-        docker push ghcr.io/${{ github.repository_owner }}/assignment3-redis:latest
+        docker tag redis:alpine ghcr.io/${{ github.actor }}/assignment3-redis:latest
+        docker push ghcr.io/${{ github.actor }}/assignment3-redis:latest
+
